@@ -23,8 +23,10 @@ const DetailPage: React.FC<IProps> = () => {
   )
   let content = null
   if (isError) {
+    // should show warning when we have error while fetching data
     content = <Warning message='There was an error while loading data' />
   } else if (!data || isLoading) {
+    // should show loading while we loading data
     content = <Loading />
   } else {
     content = (

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
-import React, { useState } from "react"
+import React from "react"
 import { Outlet, useMatch, useNavigate } from "react-router-dom"
 import Loading from "../components/Loading"
 import Warning from "../components/Warning"
@@ -22,9 +22,11 @@ const ExchangePage: React.FC<IProps> = () => {
   const navigate = useNavigate()
   if (!match) return <Outlet />
 
+  // should show warning when we have error while fetching data
   if (isError) {
     return <Warning message='There was an error while loading data' />
   }
+  // should show loading while we loading data
   if (!data || isLoading) {
     return <Loading />
   }
