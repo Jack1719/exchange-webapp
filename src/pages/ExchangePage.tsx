@@ -20,8 +20,7 @@ const ExchangePage: React.FC<IProps> = () => {
     return data
   })
   const navigate = useNavigate()
-  const [item, setItem] = useState("")
-  if (!match) return <Outlet context={item} />
+  if (!match) return <Outlet />
 
   if (isError) {
     return <Warning message='There was an error while loading data' />
@@ -50,7 +49,6 @@ const ExchangePage: React.FC<IProps> = () => {
                 className={`${i % 2 ? "bg-gray-50" : ""} border-b cursor-pointer exchange-item`}
                 key={i}
                 onClick={() => {
-                  setItem(v.id)
                   navigate(`/exchanges/${v.id}`, { replace: true })
                 }}
               >
